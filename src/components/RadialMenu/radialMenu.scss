@@ -1,0 +1,55 @@
+/* src/components/RadialMenu/RadialMenu.css */
+.radial-menu {
+  transition: transform 200ms cubic-bezier(0.4, 0, 1, 1);
+  outline: none;
+  filter: drop-shadow( 0px 10px 15px rgba(0, 0, 0, .4));
+
+  .sector_group {
+    transition: transform 200ms cubic-bezier(0.4, 0, 1, 1);
+    transform-origin: center;
+    outline: none;
+
+    &.selected {
+      filter: drop-shadow( 0px 10px 15px rgba(0, 0, 0, .8));
+    }
+
+    .sector {
+      transition: d 200ms cubic-bezier(0.4, 0, 1, 1);
+
+    }
+    .sector_arc {
+       transition: d 200ms cubic-bezier(0.4, 0, 1, 1);
+    }
+
+    &:hover {
+      .sector {
+        fill: #202020
+      }
+      .sector_arc {
+        stroke: #444444;
+      }
+    }
+
+    .sector_line {
+      transition: d 200ms cubic-bezier(0.4, 0, 1, 1);
+    }
+
+    .menu-label {
+      font-size: 14px;
+      fill: white;
+      font-weight: 500;
+      pointer-events: none;
+      user-select: none;
+      transition: transform 200ms cubic-bezier(0.4, 0, 1, 1);
+    }
+
+    .icon {
+      transition: transform 200ms cubic-bezier(0.4, 0, 1, 1);
+      //transform: translate( -25px, -25px);
+      fill: currentColor; // 继承父级颜色
+      overflow: hidden;
+    }
+
+  }
+
+}

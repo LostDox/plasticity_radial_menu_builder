@@ -1,0 +1,1044 @@
+{
+  "commandList": [
+    {
+      "id": 1,
+      "label": "Alternative Duplicate",
+      "icon": "alternative-duplicate",
+      "command": "command:alternative-duplicate",
+      "label_zh": "Alternative Duplicate",
+      "isAdd": false
+    },
+    {
+      "id": 2,
+      "label": "Boolean",
+      "icon": "boolean",
+      "command": "command:boolean",
+      "label_zh": "Boolean",
+      "isAdd": false
+    },
+    {
+      "id": 3,
+      "label": "Bridge",
+      "icon": "bridge",
+      "command": "command:bridge",
+      "label_zh": "Bridge",
+      "isAdd": false
+    },
+    {
+      "id": 4,
+      "label": "Bridge Curve",
+      "icon": "bridge-curve",
+      "command": "command:bridge-curve",
+      "label_zh": "Bridge Curve",
+      "isAdd": false
+    },
+    {
+      "id": 5,
+      "label": "Bridge Surface",
+      "icon": "bridge-surface",
+      "command": "command:bridge-surface",
+      "label_zh": "Bridge Surface",
+      "isAdd": false
+    },
+    {
+      "id": 6,
+      "label": "Center Box",
+      "icon": "center-box",
+      "command": "command:center-box",
+      "label_zh": "Center Box",
+      "isAdd": false
+    },
+    {
+      "id": 7,
+      "label": "Center Circle",
+      "icon": "center-circle",
+      "command": "command:center-circle",
+      "label_zh": "Center Circle",
+      "isAdd": false
+    },
+    {
+      "id": 8,
+      "label": "Center Point Arc",
+      "icon": "center-point-arc",
+      "command": "command:center-point-arc",
+      "label_zh": "Center Point Arc",
+      "isAdd": false
+    },
+    {
+      "id": 9,
+      "label": "Center Rectangle",
+      "icon": "center-rectangle",
+      "command": "command:center-rectangle",
+      "label_zh": "Center Rectangle",
+      "isAdd": false
+    },
+    {
+      "id": 10,
+      "label": "Check",
+      "icon": "check",
+      "command": "command:check",
+      "label_zh": "Check",
+      "isAdd": false
+    },
+    {
+      "id": 11,
+      "label": "Complete Edge",
+      "icon": "complete-edge",
+      "command": "command:complete-edge",
+      "label_zh": "Complete Edge",
+      "isAdd": false
+    },
+    {
+      "id": 12,
+      "label": "Constrained Surface",
+      "icon": "constrained-surface",
+      "command": "command:constrained-surface",
+      "label_zh": "Constrained Surface",
+      "isAdd": false
+    },
+    {
+      "id": 13,
+      "label": "Control Point Curve",
+      "icon": "control-point-curve",
+      "command": "command:control-point-curve",
+      "label_zh": "Control Point Curve",
+      "isAdd": false
+    },
+    {
+      "id": 14,
+      "label": "Convert Vertex",
+      "icon": "convert-vertex",
+      "command": "command:convert-vertex",
+      "label_zh": "Convert Vertex",
+      "isAdd": false
+    },
+    {
+      "id": 15,
+      "label": "Copy With Placement",
+      "icon": "copy-with-placement",
+      "command": "command:copy-with-placement",
+      "label_zh": "Copy With Placement",
+      "isAdd": false
+    },
+    {
+      "id": 16,
+      "label": "Corner Box",
+      "icon": "corner-box",
+      "command": "command:corner-box",
+      "label_zh": "Corner Box",
+      "isAdd": false
+    },
+    {
+      "id": 17,
+      "label": "Corner Rectangle",
+      "icon": "corner-rectangle",
+      "command": "command:corner-rectangle",
+      "label_zh": "Corner Rectangle",
+      "isAdd": false
+    },
+    {
+      "id": 18,
+      "label": "Create Instance",
+      "icon": "create-instance",
+      "command": "command:create-instance",
+      "label_zh": "Create Instance",
+      "isAdd": false
+    },
+    {
+      "id": 19,
+      "label": "Create Outline",
+      "icon": "create-outline",
+      "command": "command:create-outline",
+      "label_zh": "Create Outline",
+      "isAdd": false
+    },
+    {
+      "id": 20,
+      "label": "Create Viewspace Construction Plane",
+      "icon": "create-viewspace-construction-plane",
+      "command": "command:create-viewspace-construction-plane",
+      "label_zh": "Create Viewspace Construction Plane",
+      "isAdd": false
+    },
+    {
+      "id": 21,
+      "label": "Create Viewspace Construction Plane At Origin",
+      "icon": "create-viewspace-construction-plane-at-origin",
+      "command": "command:create-viewspace-construction-plane-at-origin",
+      "label_zh": "Create Viewspace Construction Plane At Origin",
+      "isAdd": false
+    },
+    {
+      "id": 22,
+      "label": "Curve",
+      "icon": "curve",
+      "command": "command:curve",
+      "label_zh": "Curve",
+      "isAdd": false
+    },
+    {
+      "id": 23,
+      "label": "Curve Array",
+      "icon": "curve-array",
+      "command": "command:curve-array",
+      "label_zh": "Curve Array",
+      "isAdd": false
+    },
+    {
+      "id": 24,
+      "label": "Cut",
+      "icon": "cut",
+      "command": "command:cut",
+      "label_zh": "Cut",
+      "isAdd": false
+    },
+    {
+      "id": 25,
+      "label": "Cut Curve",
+      "icon": "cut-curve",
+      "command": "command:cut-curve",
+      "label_zh": "Cut Curve",
+      "isAdd": false
+    },
+    {
+      "id": 26,
+      "label": "Cylinder",
+      "icon": "cylinder",
+      "command": "command:cylinder",
+      "label_zh": "Cylinder",
+      "isAdd": false
+    },
+    {
+      "id": 27,
+      "label": "Deform",
+      "icon": "deform",
+      "command": "command:deform",
+      "label_zh": "Deform",
+      "isAdd": false
+    },
+    {
+      "id": 28,
+      "label": "Delete",
+      "icon": "delete",
+      "command": "command:delete",
+      "label_zh": "Delete",
+      "isAdd": false
+    },
+    {
+      "id": 29,
+      "label": "Delete Redundant Topology",
+      "icon": "delete-redundant-topology",
+      "command": "command:delete-redundant-topology",
+      "label_zh": "Delete Redundant Topology",
+      "isAdd": false
+    },
+    {
+      "id": 30,
+      "label": "Deselect All",
+      "icon": "deselect-all",
+      "command": "command:deselect-all",
+      "label_zh": "Deselect All",
+      "isAdd": false
+    },
+    {
+      "id": 31,
+      "label": "Dimension",
+      "icon": "dimension",
+      "command": "command:dimension",
+      "label_zh": "Dimension",
+      "isAdd": false
+    },
+    {
+      "id": 32,
+      "label": "Dissolve",
+      "icon": "dissolve",
+      "command": "command:dissolve",
+      "label_zh": "Dissolve",
+      "isAdd": false
+    },
+    {
+      "id": 33,
+      "label": "Draft Face",
+      "icon": "draft-face",
+      "command": "command:draft-face",
+      "label_zh": "Draft Face",
+      "isAdd": false
+    },
+    {
+      "id": 34,
+      "label": "Duplicate",
+      "icon": "duplicate",
+      "command": "command:duplicate",
+      "label_zh": "Duplicate",
+      "isAdd": false
+    },
+    {
+      "id": 35,
+      "label": "Ellipse",
+      "icon": "ellipse",
+      "command": "command:ellipse",
+      "label_zh": "Ellipse",
+      "isAdd": false
+    },
+    {
+      "id": 36,
+      "label": "Export Hidden Line",
+      "icon": "export-hidden-line",
+      "command": "command:export-hidden-line",
+      "label_zh": "Export Hidden Line",
+      "isAdd": false
+    },
+    {
+      "id": 37,
+      "label": "Export Obj",
+      "icon": "export-obj",
+      "command": "command:export-obj",
+      "label_zh": "Export Obj",
+      "isAdd": false
+    },
+    {
+      "id": 38,
+      "label": "Export Stl",
+      "icon": "export-stl",
+      "command": "command:export-stl",
+      "label_zh": "Export Stl",
+      "isAdd": false
+    },
+    {
+      "id": 39,
+      "label": "Export3Mf",
+      "icon": "export3mf",
+      "command": "command:export3mf",
+      "label_zh": "Export3Mf",
+      "isAdd": false
+    },
+    {
+      "id": 40,
+      "label": "Extend",
+      "icon": "extend",
+      "command": "command:extend",
+      "label_zh": "Extend",
+      "isAdd": false
+    },
+    {
+      "id": 41,
+      "label": "Extrude",
+      "icon": "extrude",
+      "command": "command:extrude",
+      "label_zh": "Extrude",
+      "isAdd": false
+    },
+    {
+      "id": 42,
+      "label": "Fillet",
+      "icon": "fillet",
+      "command": "command:fillet",
+      "label_zh": "Fillet",
+      "isAdd": false
+    },
+    {
+      "id": 43,
+      "label": "Fillet Shell",
+      "icon": "fillet-shell",
+      "command": "command:fillet-shell",
+      "label_zh": "Fillet Shell",
+      "isAdd": false
+    },
+    {
+      "id": 44,
+      "label": "Find Boundary Edges",
+      "icon": "find-boundary-edges",
+      "command": "command:find-boundary-edges",
+      "label_zh": "Find Boundary Edges",
+      "isAdd": false
+    },
+    {
+      "id": 45,
+      "label": "Fork Material",
+      "icon": "fork-material",
+      "command": "command:fork-material",
+      "label_zh": "Fork Material",
+      "isAdd": false
+    },
+    {
+      "id": 46,
+      "label": "Freestyle Mirror",
+      "icon": "freestyle-mirror",
+      "command": "command:freestyle-mirror",
+      "label_zh": "Freestyle Mirror",
+      "isAdd": false
+    },
+    {
+      "id": 47,
+      "label": "Freestyle Move",
+      "icon": "freestyle-move",
+      "command": "command:freestyle-move",
+      "label_zh": "Freestyle Move",
+      "isAdd": false
+    },
+    {
+      "id": 48,
+      "label": "Freestyle Offset Planar Curve",
+      "icon": "freestyle-offset-planar-curve",
+      "command": "command:freestyle-offset-planar-curve",
+      "label_zh": "Freestyle Offset Planar Curve",
+      "isAdd": false
+    },
+    {
+      "id": 49,
+      "label": "Freestyle Rotate",
+      "icon": "freestyle-rotate",
+      "command": "command:freestyle-rotate",
+      "label_zh": "Freestyle Rotate",
+      "isAdd": false
+    },
+    {
+      "id": 50,
+      "label": "Freestyle Scale",
+      "icon": "freestyle-scale",
+      "command": "command:freestyle-scale",
+      "label_zh": "Freestyle Scale",
+      "isAdd": false
+    },
+    {
+      "id": 51,
+      "label": "Group Selected",
+      "icon": "group-selected",
+      "command": "command:group-selected",
+      "label_zh": "Group Selected",
+      "isAdd": false
+    },
+    {
+      "id": 52,
+      "label": "Hide Selected",
+      "icon": "hide-selected",
+      "command": "command:hide-selected",
+      "label_zh": "Hide Selected",
+      "isAdd": false
+    },
+    {
+      "id": 53,
+      "label": "Hide Unselected",
+      "icon": "hide-unselected",
+      "command": "command:hide-unselected",
+      "label_zh": "Hide Unselected",
+      "isAdd": false
+    },
+    {
+      "id": 54,
+      "label": "Hollow",
+      "icon": "hollow",
+      "command": "command:hollow",
+      "label_zh": "Hollow",
+      "isAdd": false
+    },
+    {
+      "id": 55,
+      "label": "Imprint",
+      "icon": "imprint",
+      "command": "command:imprint",
+      "label_zh": "Imprint",
+      "isAdd": false
+    },
+    {
+      "id": 56,
+      "label": "Insert Knot",
+      "icon": "insert-knot",
+      "command": "command:insert-knot",
+      "label_zh": "Insert Knot",
+      "isAdd": false
+    },
+    {
+      "id": 57,
+      "label": "Invert Hidden",
+      "icon": "invert-hidden",
+      "command": "command:invert-hidden",
+      "label_zh": "Invert Hidden",
+      "isAdd": false
+    },
+    {
+      "id": 58,
+      "label": "Invert Selection",
+      "icon": "invert-selection",
+      "command": "command:invert-selection",
+      "label_zh": "Invert Selection",
+      "isAdd": false
+    },
+    {
+      "id": 59,
+      "label": "Isolate",
+      "icon": "isolate",
+      "command": "command:isolate",
+      "label_zh": "Isolate",
+      "isAdd": false
+    },
+    {
+      "id": 60,
+      "label": "Isoparam",
+      "icon": "isoparam",
+      "command": "command:isoparam",
+      "label_zh": "Isoparam",
+      "isAdd": false
+    },
+    {
+      "id": 61,
+      "label": "Join",
+      "icon": "join",
+      "command": "command:join",
+      "label_zh": "Join",
+      "isAdd": false
+    },
+    {
+      "id": 62,
+      "label": "Line",
+      "icon": "line",
+      "command": "command:line",
+      "label_zh": "Line",
+      "isAdd": false
+    },
+    {
+      "id": 63,
+      "label": "Lock Selected",
+      "icon": "lock-selected",
+      "command": "command:lock-selected",
+      "label_zh": "Lock Selected",
+      "isAdd": false
+    },
+    {
+      "id": 64,
+      "label": "Loft",
+      "icon": "loft",
+      "command": "command:loft",
+      "label_zh": "Loft",
+      "isAdd": false
+    },
+    {
+      "id": 65,
+      "label": "Loft Guide",
+      "icon": "loft-guide",
+      "command": "command:loft-guide",
+      "label_zh": "Loft Guide",
+      "isAdd": false
+    },
+    {
+      "id": 66,
+      "label": "Manage My Shared Documents",
+      "icon": "manage-my-shared-documents",
+      "command": "command:manage-my-shared-documents",
+      "label_zh": "Manage My Shared Documents",
+      "isAdd": false
+    },
+    {
+      "id": 67,
+      "label": "Match Face",
+      "icon": "match-face",
+      "command": "command:match-face",
+      "label_zh": "Match Face",
+      "isAdd": false
+    },
+    {
+      "id": 68,
+      "label": "Measure",
+      "icon": "measure",
+      "command": "command:measure",
+      "label_zh": "Measure",
+      "isAdd": false
+    },
+    {
+      "id": 69,
+      "label": "Measure Continuity",
+      "icon": "measure-continuity",
+      "command": "command:measure-continuity",
+      "label_zh": "Measure Continuity",
+      "isAdd": false
+    },
+    {
+      "id": 70,
+      "label": "Measure Radius",
+      "icon": "measure-radius",
+      "command": "command:measure-radius",
+      "label_zh": "Measure Radius",
+      "isAdd": false
+    },
+    {
+      "id": 71,
+      "label": "Mirror",
+      "icon": "mirror",
+      "command": "command:mirror",
+      "label_zh": "Mirror",
+      "isAdd": false
+    },
+    {
+      "id": 72,
+      "label": "Move",
+      "icon": "move",
+      "command": "command:move",
+      "label_zh": "Move",
+      "isAdd": false
+    },
+    {
+      "id": 73,
+      "label": "Offset Curve",
+      "icon": "offset-curve",
+      "command": "command:offset-curve",
+      "label_zh": "Offset Curve",
+      "isAdd": false
+    },
+    {
+      "id": 74,
+      "label": "Paste With Placement",
+      "icon": "paste-with-placement",
+      "command": "command:paste-with-placement",
+      "label_zh": "Paste With Placement",
+      "isAdd": false
+    },
+    {
+      "id": 75,
+      "label": "Patch",
+      "icon": "patch",
+      "command": "command:patch",
+      "label_zh": "Patch",
+      "isAdd": false
+    },
+    {
+      "id": 76,
+      "label": "Pipe",
+      "icon": "pipe",
+      "command": "command:pipe",
+      "label_zh": "Pipe",
+      "isAdd": false
+    },
+    {
+      "id": 77,
+      "label": "Place",
+      "icon": "place",
+      "command": "command:place",
+      "label_zh": "Place",
+      "isAdd": false
+    },
+    {
+      "id": 78,
+      "label": "Polygon",
+      "icon": "polygon",
+      "command": "command:polygon",
+      "label_zh": "Polygon",
+      "isAdd": false
+    },
+    {
+      "id": 79,
+      "label": "Polysplines",
+      "icon": "polysplines",
+      "command": "command:polysplines",
+      "label_zh": "Polysplines",
+      "isAdd": false
+    },
+    {
+      "id": 80,
+      "label": "Project",
+      "icon": "project",
+      "command": "command:project",
+      "label_zh": "Project",
+      "isAdd": false
+    },
+    {
+      "id": 81,
+      "label": "Publish To Plasticity Share",
+      "icon": "publish-to-plasticity-share",
+      "command": "command:publish-to-plasticity-share",
+      "label_zh": "Publish To Plasticity Share",
+      "isAdd": false
+    },
+    {
+      "id": 82,
+      "label": "Push Face",
+      "icon": "push-face",
+      "command": "command:push-face",
+      "label_zh": "Push Face",
+      "isAdd": false
+    },
+    {
+      "id": 83,
+      "label": "Radial Array",
+      "icon": "radial-array",
+      "command": "command:radial-array",
+      "label_zh": "Radial Array",
+      "isAdd": false
+    },
+    {
+      "id": 84,
+      "label": "Raise Degree",
+      "icon": "raise-degree",
+      "command": "command:raise-degree",
+      "label_zh": "Raise Degree",
+      "isAdd": false
+    },
+    {
+      "id": 85,
+      "label": "Realize Instances",
+      "icon": "realize-instances",
+      "command": "command:realize-instances",
+      "label_zh": "Realize Instances",
+      "isAdd": false
+    },
+    {
+      "id": 86,
+      "label": "Rebuild",
+      "icon": "rebuild",
+      "command": "command:rebuild",
+      "label_zh": "Rebuild",
+      "isAdd": false
+    },
+    {
+      "id": 87,
+      "label": "Rectangular Array",
+      "icon": "rectangular-array",
+      "command": "command:rectangular-array",
+      "label_zh": "Rectangular Array",
+      "isAdd": false
+    },
+    {
+      "id": 88,
+      "label": "Remove Fillets From Shell",
+      "icon": "remove-fillets-from-shell",
+      "command": "command:remove-fillets-from-shell",
+      "label_zh": "Remove Fillets From Shell",
+      "isAdd": false
+    },
+    {
+      "id": 89,
+      "label": "Remove Material",
+      "icon": "remove-material",
+      "command": "command:remove-material",
+      "label_zh": "Remove Material",
+      "isAdd": false
+    },
+    {
+      "id": 90,
+      "label": "Remove Nominal Surface",
+      "icon": "remove-nominal-surface",
+      "command": "command:remove-nominal-surface",
+      "label_zh": "Remove Nominal Surface",
+      "isAdd": false
+    },
+    {
+      "id": 91,
+      "label": "Reverse",
+      "icon": "reverse",
+      "command": "command:reverse",
+      "label_zh": "Reverse",
+      "isAdd": false
+    },
+    {
+      "id": 92,
+      "label": "Revolve",
+      "icon": "revolve",
+      "command": "command:revolve",
+      "label_zh": "Revolve",
+      "isAdd": false
+    },
+    {
+      "id": 93,
+      "label": "Rotate",
+      "icon": "rotate",
+      "command": "command:rotate",
+      "label_zh": "Rotate",
+      "isAdd": false
+    },
+    {
+      "id": 94,
+      "label": "Scale",
+      "icon": "scale",
+      "command": "command:scale",
+      "label_zh": "Scale",
+      "isAdd": false
+    },
+    {
+      "id": 95,
+      "label": "Section Analysis",
+      "icon": "section-analysis",
+      "command": "command:section-analysis",
+      "label_zh": "Section Analysis",
+      "isAdd": false
+    },
+    {
+      "id": 96,
+      "label": "Select Adjacent",
+      "icon": "select-adjacent",
+      "command": "command:select-adjacent",
+      "label_zh": "Select Adjacent",
+      "isAdd": false
+    },
+    {
+      "id": 97,
+      "label": "Select All",
+      "icon": "select-all",
+      "command": "command:select-all",
+      "label_zh": "Select All",
+      "isAdd": false
+    },
+    {
+      "id": 98,
+      "label": "Select All Curves",
+      "icon": "select-all-curves",
+      "command": "command:select-all-curves",
+      "label_zh": "Select All Curves",
+      "isAdd": false
+    },
+    {
+      "id": 99,
+      "label": "Select Next Entity Collection",
+      "icon": "select-next-entity-collection",
+      "command": "command:select-next-entity-collection",
+      "label_zh": "Select Next Entity Collection",
+      "isAdd": false
+    },
+    {
+      "id": 100,
+      "label": "Select Previous Entity Collection",
+      "icon": "select-previous-entity-collection",
+      "command": "command:select-previous-entity-collection",
+      "label_zh": "Select Previous Entity Collection",
+      "isAdd": false
+    },
+    {
+      "id": 101,
+      "label": "Set Material",
+      "icon": "set-material",
+      "command": "command:set-material",
+      "label_zh": "Set Material",
+      "isAdd": false
+    },
+    {
+      "id": 102,
+      "label": "Slide",
+      "icon": "slide",
+      "command": "command:slide",
+      "label_zh": "Slide",
+      "isAdd": false
+    },
+    {
+      "id": 103,
+      "label": "Slot",
+      "icon": "slot",
+      "command": "command:slot",
+      "label_zh": "Slot",
+      "isAdd": false
+    },
+    {
+      "id": 104,
+      "label": "Smart Command",
+      "icon": "smart-command",
+      "command": "command:smart-command",
+      "label_zh": "Smart Command",
+      "isAdd": false
+    },
+    {
+      "id": 105,
+      "label": "Sphere",
+      "icon": "sphere",
+      "command": "command:sphere",
+      "label_zh": "Sphere",
+      "isAdd": false
+    },
+    {
+      "id": 106,
+      "label": "Spiral",
+      "icon": "spiral",
+      "command": "command:spiral",
+      "label_zh": "Spiral",
+      "isAdd": false
+    },
+    {
+      "id": 107,
+      "label": "Split Segment",
+      "icon": "split-segment",
+      "command": "command:split-segment",
+      "label_zh": "Split Segment",
+      "isAdd": false
+    },
+    {
+      "id": 108,
+      "label": "Square",
+      "icon": "square",
+      "command": "command:square",
+      "label_zh": "Square",
+      "isAdd": false
+    },
+    {
+      "id": 109,
+      "label": "Subdivide",
+      "icon": "subdivide",
+      "command": "command:subdivide",
+      "label_zh": "Subdivide",
+      "isAdd": false
+    },
+    {
+      "id": 110,
+      "label": "Sweep",
+      "icon": "sweep",
+      "command": "command:sweep",
+      "label_zh": "Sweep",
+      "isAdd": false
+    },
+    {
+      "id": 111,
+      "label": "Sweep Tool",
+      "icon": "sweep-tool",
+      "command": "command:sweep-tool",
+      "label_zh": "Sweep Tool",
+      "isAdd": false
+    },
+    {
+      "id": 112,
+      "label": "Tangent Arc",
+      "icon": "tangent-arc",
+      "command": "command:tangent-arc",
+      "label_zh": "Tangent Arc",
+      "isAdd": false
+    },
+    {
+      "id": 113,
+      "label": "Tangent Circle",
+      "icon": "tangent-circle",
+      "command": "command:tangent-circle",
+      "label_zh": "Tangent Circle",
+      "isAdd": false
+    },
+    {
+      "id": 114,
+      "label": "Text",
+      "icon": "text",
+      "command": "command:text",
+      "label_zh": "Text",
+      "isAdd": false
+    },
+    {
+      "id": 115,
+      "label": "Thicken",
+      "icon": "thicken",
+      "command": "command:thicken",
+      "label_zh": "Thicken",
+      "isAdd": false
+    },
+    {
+      "id": 116,
+      "label": "Three Point Arc",
+      "icon": "three-point-arc",
+      "command": "command:three-point-arc",
+      "label_zh": "Three Point Arc",
+      "isAdd": false
+    },
+    {
+      "id": 117,
+      "label": "Three Point Box",
+      "icon": "three-point-box",
+      "command": "command:three-point-box",
+      "label_zh": "Three Point Box",
+      "isAdd": false
+    },
+    {
+      "id": 118,
+      "label": "Three Point Circle",
+      "icon": "three-point-circle",
+      "command": "command:three-point-circle",
+      "label_zh": "Three Point Circle",
+      "isAdd": false
+    },
+    {
+      "id": 119,
+      "label": "Three Point Rectangle",
+      "icon": "three-point-rectangle",
+      "command": "command:three-point-rectangle",
+      "label_zh": "Three Point Rectangle",
+      "isAdd": false
+    },
+    {
+      "id": 120,
+      "label": "Toggle Curvature",
+      "icon": "toggle-curvature",
+      "command": "command:toggle-curvature",
+      "label_zh": "Toggle Curvature",
+      "isAdd": false
+    },
+    {
+      "id": 121,
+      "label": "Toggle Points",
+      "icon": "toggle-points",
+      "command": "command:toggle-points",
+      "label_zh": "Toggle Points",
+      "isAdd": false
+    },
+    {
+      "id": 122,
+      "label": "Trim",
+      "icon": "trim",
+      "command": "command:trim",
+      "label_zh": "Trim",
+      "isAdd": false
+    },
+    {
+      "id": 123,
+      "label": "Two Point Circle",
+      "icon": "two-point-circle",
+      "command": "command:two-point-circle",
+      "label_zh": "Two Point Circle",
+      "isAdd": false
+    },
+    {
+      "id": 124,
+      "label": "Ungroup Selected",
+      "icon": "ungroup-selected",
+      "command": "command:ungroup-selected",
+      "label_zh": "Ungroup Selected",
+      "isAdd": false
+    },
+    {
+      "id": 125,
+      "label": "Unhide All",
+      "icon": "unhide-all",
+      "command": "command:unhide-all",
+      "label_zh": "Unhide All",
+      "isAdd": false
+    },
+    {
+      "id": 126,
+      "label": "Unisolate",
+      "icon": "unisolate",
+      "command": "command:unisolate",
+      "label_zh": "Unisolate",
+      "isAdd": false
+    },
+    {
+      "id": 127,
+      "label": "Unjoin",
+      "icon": "unjoin",
+      "command": "command:unjoin",
+      "label_zh": "Unjoin",
+      "isAdd": false
+    },
+    {
+      "id": 128,
+      "label": "Untrim",
+      "icon": "untrim",
+      "command": "command:untrim",
+      "label_zh": "Untrim",
+      "isAdd": false
+    },
+    {
+      "id": 129,
+      "label": "Unwrap Face",
+      "icon": "unwrap-face",
+      "command": "command:unwrap-face",
+      "label_zh": "Unwrap Face",
+      "isAdd": false
+    },
+    {
+      "id": 130,
+      "label": "Xnurbs",
+      "icon": "xnurbs",
+      "command": "command:xnurbs",
+      "label_zh": "Xnurbs",
+      "isAdd": false
+    }
+  ]
+}

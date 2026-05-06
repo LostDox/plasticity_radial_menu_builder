@@ -1,0 +1,243 @@
+import React, {CSSProperties, useRef, useEffect, useMemo, MutableRefObject, useState} from "react";
+import { useSortable } from "@dnd-kit/sortable";
+import { useContainerStore } from "@/stores/store.ts";
+import { RadialMenuItem} from "@/types/type";
+import { throttle } from 'lodash-es';
+import './RadialMenu.scss'
+import {useDroppable} from "@dnd-kit/core";
+import SvgIcon from "@/components/RadialMenu/SvgIcon.tsx";
+import {polarToCartesian} from "@/utils/util.ts";
+import {DeleteFilled, DeleteOutlined} from "@ant-design/icons";
+
+interface RadialMenuProps {
+    items: RadialMenuItem[];
+    radius?: number;
+    onItemClick?: (item: RadialMenuItem) => void;
+    onItemsChange?: (items: RadialMenuItem[]) => void;
+    className?: string;
+    style?: CSSProperties;
+    activeColor?: string; 
+}
+
+const describeSector = (x: number, y: number, r: number, startAngle: number, endAngle: number): string => {
+    const start = polarToCartesian(x, y, r, endAngle);
+    const end = polarToCartesian(x, y, r, startAngle);
+    const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+    return ["M", x, y, "L", start.x, start.y, "A", r, r, 0, largeArcFlag, 0, end.x, end.y, "Z"].join(" ");
+};
+
+const describeLine = (x: number, y: number, r: number, startAngle: number, endAngle: number):string => {
+    const start = polarToCartesian(x, y, r, endAngle);
+    const end = polarToCartesian(x, y, r, startAngle);
+    return ["M", start.x, start.y, "L", x, y, "L", end.x, end.y].join(" ");
+}
+
+const describleArc = (x: number, y: number, r: number, startAngle: number, endAngle: number): string => {
+    const start = polarToCartesian(x, y, r, endAngle);
+    const end = polarToCartesian(x, y, r, startAngle);
+    const largeArcFlag = endAngle - startAngle <= 180 ? "0" : "1";
+    return ["M", start.x, start.y, "A", r, r, 0, largeArcFlag, 0, end.x, end.y].join(" ");
+};
+
+const SortableSector: React.FC<{
+    item: RadialMenuItem;
+    radius: number;
+    order: number;
+    angle: number;
+    outerWidth: number;
+    activeColor: string; 
+    onItemHover: (label: string) => void;
+    onItemsDrag: (isDragging: boolean) => void;
+}> = ({ item, radius, order, angle, outerWidth, onItemHover, onItemsDrag, activeColor }) => {
+    const center = radius;
+    const startAngle = order*angle - angle/2
+    const endAngle = startAngle + angle
+    const iconSize = 16;
+
+    const {
+        active, index, items, attributes, listeners, setNodeRef, isDragging, isSorting, newIndex
+    } = useSortable({
+        transition: null,
+        id: item.id,
+        data: {
+            sector: { cx: center, cy: center, r: radius - outerWidth, startAngle, endAngle }
+        }
+    });
+
+    const nodeRef = useRef<SVGGElement>(null);
+    const [currentIndex, setCurrentIndex] = useState(index);
+    const [tempIndex, setTempIndex] = useState(index);
+    const [isTransitionEnabled, setIsTransitionEnabled] = useState(true);
+
+    useEffect(()=>{
+        const indexOffest = newIndex - currentIndex;
+        const isReversed = Math.abs(indexOffest) > items.length/2;
+        const realIndex = isReversed?currentIndex+((indexOffest>0?-1:1)*(items.length-Math.abs(indexOffest))):newIndex
+        setTempIndex(realIndex)
+        setCurrentIndex(newIndex)
+    }, [newIndex])
+
+    const rotateAngle = (isSorting?tempIndex:index)*angle
+    const pathD = describeSector(center, center, radius - outerWidth, -angle/2, angle/2);
+    const pathL = describeLine(center, center, radius - outerWidth, -angle/2, angle/2);
+    const pathA = describleArc(center, center, radius - outerWidth/2, -angle/2, angle/2);
+    const textPos = polarToCartesian(center, center, radius * 0.76, 0);
+    const finalSectorAngle = rotateAngle
+
+    const style = {
+        transform: `rotate(${finalSectorAngle}deg)`,
+        transition: isTransitionEnabled?'':'none',
+    };
+
+    // NEW: Define the specific color for THIS slice
+    // If it's a nested menu, it will have its own item.color. Otherwise, it uses the active parent's color.
+    const sliceColor = item.color || activeColor;
+
+    const iconStyle = {
+        transform: `rotate(${-finalSectorAngle}deg) translate(-${iconSize/2}px, -${iconSize/2}px)`,
+        transformOrigin: `${textPos.x}px ${textPos.y}px`,
+        transition: isTransitionEnabled?'':'none',
+        // Also tint the nested menu icon so it pops!
+        color: item.color ? item.color : 'inherit' 
+    }
+
+    const arcStyle = {
+        stroke: sliceColor, // Glows with nested menu color or parent color
+        opacity: isSorting && isDragging ? 1 : 0.6
+    }
+
+    const handleTransitionEnd = (e:React.TransitionEvent) => {
+        if(e.propertyName !== 'transform') return;
+        setIsTransitionEnabled(false);
+        setTempIndex(newIndex);
+    }
+
+    useEffect(() => {
+        if (!isTransitionEnabled) {
+            const timer = setTimeout(() => setIsTransitionEnabled(true), 20);
+            return () => clearTimeout(timer);
+        }
+    }, [isTransitionEnabled]);
+
+    useEffect(() => {
+        if(isSorting&&active?.data.current?.sortable) onItemsDrag(true);
+        else onItemsDrag(false);
+    }, [isSorting])
+
+    return (
+        <g className={`sector_group text-neutral-400 hover:text-white ${isSorting?'cursor-grabbing':'cursor-grab'} ${isDragging?'cursor-grabbing':''}} ${isSorting&&isDragging?'selected':''}`} ref={(el) => {
+            setNodeRef(el as unknown as HTMLElement);
+            (nodeRef as MutableRefObject<SVGGElement | null>).current = el;
+        }} style={style} {...attributes} {...listeners} onTransitionEnd={handleTransitionEnd} onMouseEnter={() => onItemHover(item.label)} onMouseLeave={() => onItemHover('')}>
+            <path d={pathA} strokeWidth={outerWidth} style={arcStyle} fill="none" className="sector_arc transition-colors" />
+            <path
+                d={pathD}
+                fill={isSorting && isDragging ? `${sliceColor}40` : "#141414"} 
+                className="sector transition-colors"
+            />
+            <path d={pathL} strokeWidth="1" stroke="#ffffff" strokeOpacity={0.1} fill="none" className="sector_line" />
+            <SvgIcon style={iconStyle} name={item.icon} x={textPos.x} y={textPos.y} size={iconSize} inSvg />
+        </g>
+    );
+};
+
+const RadialMenuPie: React.FC<RadialMenuProps> = ({
+                                                items,
+                                                radius = 155,
+                                                className,
+                                                style,
+                                                activeColor = '#7A3DE8'
+                                               }) => {
+    const containerRef = useRef<SVGSVGElement>(null);
+    const setRect = useContainerStore((state) => state.setRect);
+    const [isSorting, setSorting] = useState(false);
+    const [labelHover, setLabelHover] = useState('');
+
+    const { setNodeRef, isOver, active } = useDroppable({
+        id: 'trashBin',
+    })
+
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        const updateRect = throttle(() => {
+            const rect = container.getBoundingClientRect();
+            setRect(rect);
+        }, 600);
+
+        updateRect();
+
+        const resizeObserver = new ResizeObserver(updateRect);
+        resizeObserver.observe(container);
+
+        window.addEventListener('scroll', updateRect, { passive: true });
+        window.addEventListener('resize', updateRect);
+
+        return () => {
+            resizeObserver.disconnect();
+            window.removeEventListener('scroll', updateRect);
+            window.removeEventListener('resize', updateRect);
+        };
+    }, [setRect]);
+
+    const sortedMenuItems = useMemo(() => {
+        const tempArray = items.map((item, index) => ({...item, order: index}))
+        const activeItem = tempArray.find((item) => item.id === active?.id)
+        if(active&&activeItem) {
+            return [
+                ...tempArray.filter((item) => item.id !== active.id),
+                activeItem
+            ]
+        } else {
+            return tempArray
+        }
+    }, [items, active]);
+
+    return (
+        <>
+            <svg
+                ref={containerRef}
+                className={`radial-menu flex justify-center items-center ${className ? className : ''}`}
+                style={{
+                    ...style,
+                    width: radius * 2,
+                    height: radius * 2,
+                }}
+                viewBox={`0 0 ${radius * 2} ${radius * 2}`}
+            >
+                <radialGradient id="trashBin" cx="50%" cy="50%" r="50%">
+                    <stop offset="60%" stopColor="#000000"/>
+                    <stop offset="100%" stopColor="#6a1c1e"/>
+                </radialGradient>
+                <circle cx={radius} cy={radius} r={radius - 5 } stroke="#141414" strokeWidth={10} fill="#000000"/>
+                {sortedMenuItems.map((item) => {
+                    const angle = 360 / items.length;
+
+                    return (
+                        <SortableSector
+                            key={item.id}
+                            item={item}
+                            radius={radius}
+                            order={item.order}
+                            angle={angle}
+                            outerWidth={12}
+                            activeColor={activeColor} 
+                            onItemsDrag={value=>setSorting(value)}
+                            onItemHover={value=>setLabelHover(value)}
+                        />
+                    );
+                })}
+                <circle cx={radius} cy={radius} r={radius - 10} fill="none" stroke="#000000" strokeWidth={6}/>
+                <circle cx={radius} cy={radius} r={75} fill="#000000" stroke="#ffffff" strokeWidth={1} strokeOpacity={0.1}/>
+                <circle ref={(el) => setNodeRef(el as unknown as HTMLElement)} cx={radius} cy={radius} r={70}
+                        fill={isOver ? 'url(#trashBin)' : '#000000'} stroke="#ffffff" strokeWidth={1} strokeOpacity={0.1}/>
+            </svg>
+            <div className={`w-[140px] h-[140px] flex flex-col justify-center items-center absolute pointer-events-none rounded-full ${isOver?'text-red-700':'text-neutral-300'}`}>
+                {isSorting?(<>{isOver? <DeleteFilled className='text-xl'/> : <DeleteOutlined className='text-xl '/>}<div className='text-center text-xs/4'>Delete</div></>):<span className='text-neutral-300 text-center text-xs/4 p-4'>{labelHover}</span>}
+            </div>
+        </>
+    );
+};
+
+export default RadialMenuPie;
