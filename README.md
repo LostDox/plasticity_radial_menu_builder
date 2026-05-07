@@ -1,6 +1,3 @@
-<p align="center">
-  <img width="100" height="100" src="doc/radmenu.png" />
-</p>
 <h1 align="center">Plasticity Radial Menu Builder</h1>
 
 <h3 align="center">
