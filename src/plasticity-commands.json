@@ -627,8 +627,8 @@
     {
       "id": 79,
       "label": "Polysplines",
-      "icon": "polysplines",
-      "command": "command:polysplines",
+      "icon": "polyspline",
+      "command": "command:poly-splines",
       "label_zh": "Polysplines",
       "isAdd": false
     },

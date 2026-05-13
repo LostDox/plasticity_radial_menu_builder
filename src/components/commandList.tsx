@@ -53,7 +53,9 @@ const CommandList: React.FC<{
 }> = ({ refItems, activeColor }) => {
     
     const { listItems } = useListItemStore()
-    const menuCommands = new Set(refItems.map((item) => item.command))
+
+    // FIX: Memoize the Set so it doesn't trigger downstream updates every render
+    const menuCommands = useMemo(() => new Set(refItems.map((item) => item.command)), [refItems])
 
     const flatData: flatListItem[] = useMemo(() => listItems.flatMap((category) => category.items.map((item) => ({
         ...item,
@@ -61,7 +63,7 @@ const CommandList: React.FC<{
         type_zh: category.commandType_zh,
         isAdd: menuCommands.has(item.command),
     }))
-    ), [listItems, refItems, menuCommands])
+    ), [listItems, menuCommands]) // menuCommands is now a stable dependency
 
     const [searchTerm, setSearchTerm] = useState('')
     const [listComItems, setListComItems] = useState(listItems)
@@ -122,7 +124,6 @@ const CommandList: React.FC<{
                         {category.items.length > 0 && <span className='p-2 pl-1 text-xs bg-neutral-900 text-neutral-500 sticky top-0 font-mono' key={category.commandType}>{category.commandType}</span>}
                         {category.items.map((item) => {
                             
-                            // NEW: If the item has its own color (like a nested menu), use it! Otherwise fallback.
                             const displayColor = item.color ? item.color : (item.isAdd ? activeColor : 'inherit');
                             const badgeColor = item.color || activeColor;
 
