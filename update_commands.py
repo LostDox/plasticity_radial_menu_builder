@@ -7,6 +7,11 @@ ICON_OVERRIDES = {
     # Add more icon overrides here if new tools have mismatched icon names in the future
 }
 
+COMMAND_OVERRIDES = {
+    "polysplines": "poly-splines",
+    # Add more command overrides here if the official docs have incorrect command strings for new tools
+}
+
 print("🔄 Fetching latest Plasticity commands from official docs...")
 
 # Best source page with many command examples
@@ -26,12 +31,13 @@ for i, cmd in enumerate(unique_commands, 1):
     label = cmd.replace('-', ' ').title()
     
     icon_name = ICON_OVERRIDES.get(cmd, cmd)
+    actual_cmd = COMMAND_OVERRIDES.get(cmd, cmd)
     
     command_list.append({
         "id": i,
         "label": label,
         "icon": icon_name,
-        "command": f"command:{cmd}",
+        "command": f"command:{actual_cmd}",
         "label_zh": label,
         "isAdd": False
     })
@@ -45,4 +51,4 @@ with open(output_path, "w", encoding="utf-8") as f:
 
 print(f"✅ Success! Found and saved {len(command_list)} commands")
 print(f"File saved to: {output_path}")
-print("Note: Icon overrides applied for any mismatched tools (e.g. polysplines → polyspline)")
+print("Note: Icon and command overrides applied for any mismatched tools (e.g. polysplines → polyspline / poly-splines)")
