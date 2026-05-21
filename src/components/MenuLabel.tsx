@@ -3,7 +3,7 @@ import {polarToCartesian} from "@/utils/util.ts";
 import {GlobalRadialMenuItem, point} from "@/types/type";
 import EditableText from "@/components/EditableText.tsx";
 import { useGlobalMenuItemStore } from "@/stores/store";
-import {useTranslation} from "react-i18next";
+
 
 enum Direction {
     Up = "Top",
@@ -41,7 +41,6 @@ const MenuLabel:React.FC<menuLabelProps> = ({
                                                 size = {width:500,height:500},
                                                 extendLength = 10,
                                             }) => {
-    const { t } = useTranslation();
     const { globalMenuItems} = useGlobalMenuItemStore();
     const containerRef = useRef<SVGSVGElement>(null);
 
@@ -253,7 +252,7 @@ const MenuLabel:React.FC<menuLabelProps> = ({
                             />
                             {/*<h4 className='text-lg/5 gabarito-bold font-bold w-fit text-neutral-400'>{label.label}</h4>*/}
                             <div className="inline-flex icon_wrap gap-1 items-baseline font-mono">
-                                <span className='flex items-start bg-neutral-700 px-1 py-0.5 rounded-sm text-xs whitespace-nowrap'>{t('command')}</span>
+                                <span className='flex items-start bg-neutral-700 px-1 py-0.5 rounded-sm text-xs whitespace-nowrap'>"command"</span>
                                 <span className='text-sm/4 text-neutral-500'>{label.command}</span>
                             </div>
                         </li>

@@ -14,6 +14,7 @@ import EditableText from "@/components/EditableText.tsx";
 import TabTitle from "@/components/TabTitle.tsx";
 
 const App:React.FC = () => {
+    const { undo, redo, canUndo, canRedo } = useGlobalMenuItemStore();
 
     const { listItems, setListItems } = useListItemStore();
     const { globalMenuItems, setGlobalMenuItems } = useGlobalMenuItemStore();
@@ -247,3 +248,23 @@ const App:React.FC = () => {
 }
 
 export default App
+// Keyboard shortcuts for Undo/Redo
+useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
+            e.preventDefault();
+            if (e.shiftKey) {
+                redo();
+            } else {
+                undo();
+            }
+        }
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') {
+            e.preventDefault();
+            redo();
+        }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+}, [undo, redo]);
