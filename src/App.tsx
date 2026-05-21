@@ -149,6 +149,26 @@ const App:React.FC = () => {
         }
     };
     
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") {
+                e.preventDefault();
+                if (e.shiftKey) {
+                    redo();
+                } else {
+                    undo();
+                }
+            }
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "y") {
+                e.preventDefault();
+                redo();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [undo, redo]);
+
     return (
         <ConfigProvider
         theme={{
@@ -248,23 +268,3 @@ const App:React.FC = () => {
 }
 
 export default App
-// Keyboard shortcuts for Undo/Redo
-useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') {
-            e.preventDefault();
-            if (e.shiftKey) {
-                redo();
-            } else {
-                undo();
-            }
-        }
-        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') {
-            e.preventDefault();
-            redo();
-        }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-}, [undo, redo]);
