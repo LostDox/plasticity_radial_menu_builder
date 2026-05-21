@@ -24,7 +24,7 @@ const App:React.FC = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [direction, setDirection] = useState<1 | -1>(1);
 
-    const currentRadialItems = globalMenuItems[activeIndex].items;
+    const currentRadialItems = (globalMenuItems[activeIndex] || globalMenuItems[0] || { items: [] }).items;
     
     const activeColor = globalMenuItems[activeIndex]?.color || '#7A3DE8';
 
