@@ -26,8 +26,8 @@ interface ContainerState {
     setRect: (rect: DOMRect) => void;
 }
 
-const useGlobalMenuItemStore = create<GlobalRadialMenuState>((set, get) => ({
-    globalMenuItems: [{
+const useGlobalMenuItemStore = create<GlobalRadialMenuState>((set, get) => {
+    const initialItems = [{
         name: 'Default Menu',
         command: 'user:default-menu',
         color: '#8B5CF6',
@@ -37,50 +37,58 @@ const useGlobalMenuItemStore = create<GlobalRadialMenuState>((set, get) => ({
             { id: 'radMenu-165', label: 'Selection mode: set face', label_zh: "选择模式：设置面", icon: 'selection-mode-set-face', command: 'selection:mode:set:face' },
             { id: 'radMenu-166', label: 'Selection mode: set solid', label_zh: "选择模式：设置实体", icon: 'selection-mode-set-solid', command: 'selection:mode:set:solid' },
         ]
-    }],
-    history: [[]],
-    historyIndex: 0,
+    }];
 
-    setGlobalMenuItems: (updater) => {
-        set((state) => {
-            const newItems = typeof updater === 'function' 
-                ? updater(state.globalMenuItems) 
-                : updater;
+    return {
+        globalMenuItems: initialItems,
+        history: [initialItems],
+        historyIndex: 0,
 
-            const newHistory = state.history.slice(0, state.historyIndex + 1);
-            newHistory.push([...state.globalMenuItems]);
+        setGlobalMenuItems: (updater) => {
+            set((state) => {
+                const newItems = typeof updater === 'function' 
+                    ? updater(state.globalMenuItems) 
+                    : updater;
 
-            return {
-                globalMenuItems: newItems,
-                history: newHistory,
-                historyIndex: newHistory.length - 1,
-            };
-        });
-    },
+                // Create a clean deep copy for history to avoid reference pollution
+                const deepCopyNew = JSON.parse(JSON.stringify(newItems));
+                const newHistory = state.history.slice(0, state.historyIndex + 1);
+                newHistory.push(deepCopyNew);
 
-    undo: () => {
-        const { history, historyIndex } = get();
-        if (historyIndex > 0) {
-            set({
-                globalMenuItems: history[historyIndex - 1],
-                historyIndex: historyIndex - 1,
+                return {
+                    globalMenuItems: newItems,
+                    history: newHistory,
+                    historyIndex: newHistory.length - 1,
+                };
             });
-        }
-    },
+        },
 
-    redo: () => {
-        const { history, historyIndex } = get();
-        if (historyIndex < history.length - 1) {
-            set({
-                globalMenuItems: history[historyIndex + 1],
-                historyIndex: historyIndex + 1,
-            });
-        }
-    },
+        undo: () => {
+            const { history, historyIndex } = get();
+            if (historyIndex > 0) {
+                const targetIndex = historyIndex - 1;
+                set({
+                    globalMenuItems: JSON.parse(JSON.stringify(history[targetIndex])),
+                    historyIndex: targetIndex,
+                });
+            }
+        },
 
-    canUndo: () => get().historyIndex > 0,
-    canRedo: () => get().historyIndex < get().history.length - 1,
-}));
+        redo: () => {
+            const { history, historyIndex } = get();
+            if (historyIndex < history.length - 1) {
+                const targetIndex = historyIndex + 1;
+                set({
+                    globalMenuItems: JSON.parse(JSON.stringify(history[targetIndex])),
+                    historyIndex: targetIndex,
+                });
+            }
+        },
+
+        canUndo: () => get().historyIndex > 0,
+        canRedo: () => get().historyIndex < get().history.length - 1,
+    };
+});
 
 const useListItemStore = create<ListItemState>((set) => ({
     listItems: [{
