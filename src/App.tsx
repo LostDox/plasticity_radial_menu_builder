@@ -14,6 +14,7 @@ import EditableText from "@/components/EditableText.tsx";
 import TabTitle from "@/components/TabTitle.tsx";
 
 const App:React.FC = () => {
+    const { undo, redo, canUndo, canRedo } = useGlobalMenuItemStore();
 
     const { listItems, setListItems } = useListItemStore();
     const { globalMenuItems, setGlobalMenuItems } = useGlobalMenuItemStore();
@@ -23,7 +24,7 @@ const App:React.FC = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [direction, setDirection] = useState<1 | -1>(1);
 
-    const currentRadialItems = globalMenuItems[activeIndex].items;
+    const currentRadialItems = (globalMenuItems[activeIndex] || globalMenuItems[0] || { items: [] }).items;
     
     const activeColor = globalMenuItems[activeIndex]?.color || '#7A3DE8';
 
@@ -36,8 +37,7 @@ const App:React.FC = () => {
         // NEW: Grab the color from the global menu items
         return globalMenuItems.map(item => ({name: item.name, command: item.command, color: item.color}))
     },[globalMenuItems])
-
-    useEffect(() => {
+useEffect(() => {
         const rads:RadialMenuItem[] = radialMenuCommands.map(item => ({
             id: 'radMenu_'+item.command, 
             label: item.name, 
@@ -45,6 +45,7 @@ const App:React.FC = () => {
             command: 'view:radial:'+item.command,
             color: item.color // NEW: Inject the color into the draggable tool blueprint!
         }))
+
         const listItemsWithoutRads = listItems.slice(1)
         const newListItems = [
             {
@@ -56,7 +57,7 @@ const App:React.FC = () => {
         ]
         setListItems(newListItems)
 
-    },[globalMenuItems.length, radialMenuCommands, activeIndex])
+    },[globalMenuItems, radialMenuCommands, activeIndex])
 
     const flatListItems= useMemo(() => listItems.flatMap((item) => item.items), [listItems])
 
@@ -148,6 +149,26 @@ const App:React.FC = () => {
         }
     };
     
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") {
+                e.preventDefault();
+                if (e.shiftKey) {
+                    redo();
+                } else {
+                    undo();
+                }
+            }
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "y") {
+                e.preventDefault();
+                redo();
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [undo, redo]);
+
     return (
         <ConfigProvider
         theme={{

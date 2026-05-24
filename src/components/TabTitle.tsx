@@ -1,7 +1,8 @@
 import React, { useMemo, useState, useRef } from "react";
 import { Segmented, Button, Space, Tooltip, message, Popconfirm, Dropdown, MenuProps } from 'antd';
-import { PlusOutlined, DownloadOutlined, DeleteOutlined, WarningOutlined, DownOutlined, FolderOpenOutlined } from "@ant-design/icons";
+import { PlusOutlined, DownloadOutlined, DeleteOutlined, WarningOutlined, CopyOutlined, UndoOutlined, RedoOutlined, DownOutlined, FolderOpenOutlined } from "@ant-design/icons";
 import { GlobalRadialMenuItem } from "@/types/type";
+import { useGlobalMenuItemStore } from "@/stores/store";
 import type { PopconfirmProps } from 'antd';
 import NewMenuModal from "@/components/NewMenuModal.tsx";
 
@@ -29,9 +30,26 @@ const TabTitle:React.FC< {
 }> = ({index, globalItems, onSwitch, onItemsChange}) => {
 
     const [isModalOpen, setModalOpen] = useState(false);
+    const { undo, redo, canUndo, canRedo } = useGlobalMenuItemStore();
     const [messageApi, contextHolder] = message.useMessage();
     
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const handleDuplicate = (index: number) => {
+        const menuToCopy = globalItems[index];
+        const newName = menuToCopy.name + " (Copy)";
+        const newCommand = menuToCopy.command + "-copy-" + Date.now();
+
+        const duplicatedMenu = {
+            ...menuToCopy,
+            name: newName,
+            command: newCommand,
+        };
+
+        const newItems = [...globalItems];
+        newItems.splice(index + 1, 0, duplicatedMenu);
+        onItemsChange(newItems);
+    }
 
     const handleMenuDelete = (index:number) => {
         onItemsChange(globalItems.filter((_, idx:number) => idx !== index));
@@ -221,6 +239,25 @@ const TabTitle:React.FC< {
                 </Popconfirm>
                 <Tooltip title="Add Menu">
                     <Button type="default" onClick={handleAdd} icon={<PlusOutlined/>}/>
+                </Tooltip>
+
+                <Tooltip title="Duplicate Menu">
+                    <Button onClick={() => handleDuplicate(index)} icon={<CopyOutlined/>}/>
+                </Tooltip>
+
+                <Tooltip title="Undo">
+                    <Button 
+                        onClick={undo} 
+                        disabled={!canUndo()} 
+                        icon={<UndoOutlined/>}
+                    />
+                </Tooltip>
+                <Tooltip title="Redo">
+                    <Button 
+                        onClick={redo} 
+                        disabled={!canRedo()} 
+                        icon={<RedoOutlined/>}
+                    />
                 </Tooltip>
 
                 <Popconfirm
