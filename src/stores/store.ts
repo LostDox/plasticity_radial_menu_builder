@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { GlobalRadialMenuItem, listItem } from "@/types/type";
+import plasticityCommands from '@/plasticity-commands.json';
 
 interface GlobalRadialMenuState {
     globalMenuItems: GlobalRadialMenuItem[];
@@ -98,7 +99,7 @@ const useListItemStore = create<ListItemState>((set) => ({
     }, {
         commandType: 'Commands',
         commandType_zh: '命令',
-        items: []
+        items: plasticityCommands.commandList
     }],
     setListItems: (updater) => set((state) => ({
         listItems: typeof updater === 'function' ? updater(state.listItems) : updater

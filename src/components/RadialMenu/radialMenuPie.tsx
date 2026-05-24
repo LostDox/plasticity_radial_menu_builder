@@ -3,7 +3,7 @@ import { useSortable } from "@dnd-kit/sortable";
 import { useContainerStore } from "@/stores/store.ts";
 import { RadialMenuItem} from "@/types/type";
 import { throttle } from 'lodash-es';
-import './RadialMenu.scss'
+import './radialMenu.scss'
 import {useDroppable} from "@dnd-kit/core";
 import SvgIcon from "@/components/RadialMenu/SvgIcon.tsx";
 import {polarToCartesian} from "@/utils/util.ts";
