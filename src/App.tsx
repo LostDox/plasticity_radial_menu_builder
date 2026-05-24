@@ -37,8 +37,7 @@ const App:React.FC = () => {
         // NEW: Grab the color from the global menu items
         return globalMenuItems.map(item => ({name: item.name, command: item.command, color: item.color}))
     },[globalMenuItems])
-
-    useEffect(() => {
+useEffect(() => {
         const rads:RadialMenuItem[] = radialMenuCommands.map(item => ({
             id: 'radMenu_'+item.command, 
             label: item.name, 
@@ -46,6 +45,7 @@ const App:React.FC = () => {
             command: 'view:radial:'+item.command,
             color: item.color // NEW: Inject the color into the draggable tool blueprint!
         }))
+
         const listItemsWithoutRads = listItems.slice(1)
         const newListItems = [
             {
@@ -57,7 +57,7 @@ const App:React.FC = () => {
         ]
         setListItems(newListItems)
 
-    },[globalMenuItems.length, radialMenuCommands, activeIndex])
+    },[globalMenuItems, radialMenuCommands, activeIndex])
 
     const flatListItems= useMemo(() => listItems.flatMap((item) => item.items), [listItems])
 
