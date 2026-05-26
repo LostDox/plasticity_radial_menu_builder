@@ -24,6 +24,9 @@ const App:React.FC = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [direction, setDirection] = useState<1 | -1>(1);
 
+    // Clamp activeIndex during render so undo/redo doesn't crash children
+    const clampedIndex = Math.min(activeIndex, Math.max(0, globalMenuItems.length - 1));
+
     const currentRadialItems = (globalMenuItems[activeIndex] || globalMenuItems[0] || { items: [] }).items;
     
     const activeColor = globalMenuItems[activeIndex]?.color || '#7A3DE8';
@@ -58,6 +61,13 @@ useEffect(() => {
         setListItems(newListItems)
 
     },[globalMenuItems, radialMenuCommands, activeIndex])
+
+    // Keep activeIndex in bounds when undo/redo/import changes the menu count
+    useEffect(() => {
+        if (activeIndex >= globalMenuItems.length) {
+            setActiveIndex(Math.max(0, globalMenuItems.length - 1));
+        }
+    }, [globalMenuItems.length, activeIndex])
 
     const flatListItems= useMemo(() => listItems.flatMap((item) => item.items), [listItems])
 
@@ -200,7 +210,7 @@ useEffect(() => {
                             <div className="flex flex-col pt-6 pb-6">
                                 <EditableText
                                     keyStr='name'
-                                    indexes={[activeIndex]}
+                                    indexes={[clampedIndex]}
                                     className='text-white'
                                     publicClassNames='text-4xl gabarito-bold border-b-1'
                                     editableClassNames='border-b-neutral-500 outline-0'
@@ -210,7 +220,7 @@ useEffect(() => {
                                     <span className='py-1 px-1 rounded-sm text-neutral-300 bg-neutral-700 text-xs'>Command</span>
                                     <EditableText
                                         keyStr='command'
-                                        indexes={[activeIndex]}
+                                        indexes={[clampedIndex]}
                                         className='text-neutral-400'
                                         publicClassNames='gabarito-regular text-lg border-b-1'
                                         editableClassNames='border-b-neutral-500 outline-0'
@@ -224,17 +234,17 @@ useEffect(() => {
                                 mode="popLayout"
                             >
                                 <div
-                                    key={`parent-${activeIndex}`}
+                                    key={`parent-${clampedIndex}`}
                                     className="relative w-full h-full flex flex-col justify-center items-center self-stretch overflow-hidden">
                                         <OperatedPanel
-                                            menuItem={globalMenuItems[activeIndex]}
+                                            menuItem={globalMenuItems[clampedIndex]}
                                             size={size}
                                             activeColor={activeColor} 
                                         />
                                 </div>
                             </AnimatePresence>
                             <TabTitle
-                                index={activeIndex}
+                                index={clampedIndex}
                                 globalItems={globalMenuItems}
                                 onItemsChange={handleItemsChange}
                                 onSwitch={handleSwitch}
@@ -242,7 +252,7 @@ useEffect(() => {
                         </div>
                         <AnimatePresence mode="popLayout">
                             <div
-                                key={`parent-commandList-${activeIndex}-`}
+                                key={`parent-commandList-${clampedIndex}-`}
                                 className='self-stretch flex relative'
                                 style={{width: 390}}
                             >
