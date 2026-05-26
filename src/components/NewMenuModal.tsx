@@ -129,7 +129,7 @@ const NewMenuModal: React.FC<ModalFormProps> = ({ visible, onCancel, onSubmit, e
 
     const handleOk = async () => {
         try {
-            const values = await form.validateFields();
+            await form.validateFields();
             form.submit();
         } catch (error) {
             console.log('vaild failed', error);

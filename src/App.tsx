@@ -1,4 +1,4 @@
-import React, {useState, useMemo, useEffect, useRef} from "react";
+import React, {useState, useMemo, useEffect} from "react";
 import { DndContext, DragEndEvent, DragOverlay } from "@dnd-kit/core";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 import { useListItemStore, useGlobalMenuItemStore } from "@/stores/store";
@@ -7,7 +7,7 @@ import CommandList from "@/components/commandList";
 import { ConfigProvider, theme, message } from 'antd';
 import { DragStartEvent } from "@dnd-kit/core/dist/types/events";
 import './App.css'
-import { GlobalRadialMenuItem, RadialMenuItem, flatListItem } from "@/types/type";
+import { GlobalRadialMenuItem, RadialMenuItem } from "@/types/type";
 import OperatedPanel from "@/components/operatedPanel";
 import { AnimatePresence } from 'motion/react'
 import EditableText from "@/components/EditableText.tsx";
