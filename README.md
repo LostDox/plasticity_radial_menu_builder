@@ -20,7 +20,9 @@
 4. **Export**: 
    - **Export Current**: Download the active menu as a `.radial.json` for use in Plasticity.
    - **Export Full Workspace**: Save your entire multi-tab setup and colors as a backup.
-5. **Install**: Drag your exported `.radial.json` file directly into the Plasticity viewport. Press `F`, search for your menu name, and right-click to assign a shortcut.
+5. **Install**: 
+   - **In Plasticity**: Drag your exported `.radial.json` file directly into the Plasticity viewport. Press `F`, search for your menu name, and right-click to assign a shortcut.
+   - **In the Builder**: Drop a `.radial.json` file directly onto the tool to import or replace a single menu without reloading your workspace.
 
 ---
 
@@ -46,6 +48,18 @@ Designed specifically to mirror Plasticity's internal command structure for inst
   <img width="800" src="gifs/plasticity.gif" alt="Using the menus in Plasticity" />
 </p>
 
+### 🔁 Duplicate Menus
+Duplicate any existing radial menu with one click — perfect for creating variations of a base layout. Each duplicate gets its own tab and can be customized independently.
+
+### ↩️ Undo & Redo
+Full undo/redo support for structural changes. Accidentally removed a command or deleted the wrong tab? Undo it. Changed your mind? Redo it. Works across menu operations, drag-and-drop, and tab management.
+
+### 🔍 Fuzzy Search
+Find commands instantly with fuzzy matching. The search tolerates typos, partial words, and out-of-order terms — so you spend less time hunting and more time building.
+
+### 📥 Import Single Menu (Drag & Drop)
+Drop a `.radial.json` file directly onto the builder to instantly replace the current menu's contents. No need to reload your workspace — just drag and go. Perfect for swapping in menus exported from Plasticity or from another tab.
+
 ---
 
 ## 🏗️ Credits & Attribution
@@ -56,6 +70,9 @@ This project is an advanced fork of the [Plasticity Radial Menu Editor](https://
 - **Reactive UI**: Full multi-radial support with color-coded workspaces for better navigation.
 - **Persistence**: Added a robust Workspace Save/Load system.
 - **UX Polish**: Streamlined the UI and removed redundant logic for a faster experience.
+- **Duplicate Menus**: One-click menu duplication for rapid prototyping.
+- **Undo & Redo**: Full history stack for structural changes.
+- **Import Single Menu**: Drag-and-drop `.radial.json` files directly onto the builder.
 
 ---
 
