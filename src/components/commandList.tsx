@@ -10,6 +10,7 @@ import { motion } from "motion/react";
 import SvgIcon from "@/components/RadialMenu/SvgIcon.tsx";
 import { convertFlat2ListItems } from "@/utils/util.ts";
 import { useListItemStore } from "@/stores/store.ts";
+import plasticityCommands from '@/plasticity-commands.json';
 
 type ThumbVerticalProps = {
     style: CSSProperties;
@@ -113,6 +114,11 @@ const CommandList: React.FC<{
                 variant='underlined'
                 allowClear
             />
+            <div className="flex items-center justify-between px-1">
+                <span className="text-[10px] text-neutral-600 font-mono">
+                    Updated: {plasticityCommands._meta?.lastUpdated || 'N/A'}
+                </span>
+            </div>
             <Scrollbars
                 className='flex flex-col'
                 renderThumbVertical={ThumbVertical}

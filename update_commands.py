@@ -1,6 +1,7 @@
 import requests
 import json
 import re
+from datetime import datetime, timezone
 
 ICON_OVERRIDES = {
     "polysplines": "polyspline",
@@ -44,7 +45,12 @@ for i, cmd in enumerate(unique_commands, 1):
 
 # We changed this to save directly into the src folder!
 output_path = "src/plasticity-commands.json"
-output = {"commandList": command_list}
+output = {
+    "_meta": {
+        "lastUpdated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+    },
+    "commandList": command_list,
+}
 
 with open(output_path, "w", encoding="utf-8") as f:
     json.dump(output, f, indent=2, ensure_ascii=False)
