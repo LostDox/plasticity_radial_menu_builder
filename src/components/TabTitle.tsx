@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useRef } from "react";
 import { Segmented, Button, Space, Tooltip, message, Popconfirm, Dropdown, MenuProps } from 'antd';
-import { PlusOutlined, DownloadOutlined, DeleteOutlined, WarningOutlined, CopyOutlined, UndoOutlined, RedoOutlined, DownOutlined, FolderOpenOutlined } from "@ant-design/icons";
+import { PlusOutlined, DownloadOutlined, DeleteOutlined, WarningOutlined, CopyOutlined, UndoOutlined, RedoOutlined, DownOutlined, FolderOpenOutlined, EditOutlined } from "@ant-design/icons";
 import { GlobalRadialMenuItem } from "@/types/type";
 import { useGlobalMenuItemStore } from "@/stores/store";
 import type { PopconfirmProps } from 'antd';
@@ -10,14 +10,30 @@ const Tabunit:React.FC<{
     index: number;
     label: string;
     onDelete: (index: number) => void;
-}> = ({ label }) => {
+    onEdit: (index: number) => void;
+}> = ({ label, onEdit, index }) => {
 
     return (
         <Tooltip
             title={label}
             trigger='hover'
         >
-            <span className={`py-1`}>{label}</span>
+            <span
+                className="py-1 inline-flex items-center gap-1.5 group/edit-tab"
+                onDoubleClick={(e) => {
+                    e.stopPropagation();
+                    onEdit(index);
+                }}
+            >
+                <span>{label}</span>
+                <EditOutlined
+                    className="text-xs opacity-0 group-hover/edit-tab:opacity-100 transition-opacity cursor-pointer text-neutral-500 hover:text-white"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onEdit(index);
+                    }}
+                />
+            </span>
         </Tooltip>
     )
 }
@@ -30,6 +46,7 @@ const TabTitle:React.FC< {
 }> = ({index, globalItems, onSwitch, onItemsChange}) => {
 
     const [isModalOpen, setModalOpen] = useState(false);
+    const [editModalIndex, setEditModalIndex] = useState<number | null>(null);
     const { undo, redo, canUndo, canRedo } = useGlobalMenuItemStore();
     const [messageApi, contextHolder] = message.useMessage();
     
@@ -65,6 +82,7 @@ const TabTitle:React.FC< {
                     index={idx}
                     label={item.name}
                     onDelete={handleMenuDelete}
+                    onEdit={handleEdit}
                 />
             ),
         }))
@@ -78,6 +96,10 @@ const TabTitle:React.FC< {
 
     const handleAdd = () => {
         setModalOpen(true);
+    }
+
+    const handleEdit = (editIndex: number) => {
+        setEditModalIndex(editIndex);
     }
 
     const downloadJson = (menuItem: GlobalRadialMenuItem) => {
@@ -204,9 +226,25 @@ const TabTitle:React.FC< {
         onItemsChange(copyGlobalItems)
     }
 
+    const handleEditSubmit = async (item: GlobalRadialMenuItem) => {
+        setEditModalIndex(null);
+        const newItems = globalItems.map((oldItem, i) =>
+            i === editModalIndex ? item : oldItem
+        );
+        onItemsChange(newItems);
+    }
+
+    const editItem = editModalIndex !== null ? globalItems[editModalIndex] : null;
+
     return (
         <div className="p-6 flex justify-between items-center gap-4">
             <NewMenuModal visible={isModalOpen} onSubmit={handleSubmit} onCancel={() => setModalOpen(false)}/>
+            <NewMenuModal
+                visible={editModalIndex !== null}
+                onSubmit={handleEditSubmit}
+                onCancel={() => setEditModalIndex(null)}
+                editItem={editItem}
+            />
             
             <input 
                 type="file" 

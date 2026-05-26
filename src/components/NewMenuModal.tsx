@@ -35,9 +35,10 @@ interface ModalFormProps {
     visible: boolean;              
     onSubmit: (values: GlobalRadialMenuItem) => void; 
     onCancel: () => void;          
+    editItem?: GlobalRadialMenuItem | null;
 }
 
-const NewMenuModal: React.FC<ModalFormProps> = ({ visible, onCancel, onSubmit }) => {
+const NewMenuModal: React.FC<ModalFormProps> = ({ visible, onCancel, onSubmit, editItem }) => {
     const { globalMenuItems } = useGlobalMenuItemStore();
     const { listItems } = useListItemStore()
     const [form] = Form.useForm();
@@ -47,6 +48,8 @@ const NewMenuModal: React.FC<ModalFormProps> = ({ visible, onCancel, onSubmit })
     
     // State to track which color circle the user clicked
     const [selectedColor, setSelectedColor] = useState(THEME_COLORS[4]); // Default to Violet
+
+    const isEditing = !!editItem;
 
     const handleDataLoaded = (values: GlobalRadialMenuItem) => {
         const itemsWithId = values.items.reduce((acc, item) => {
@@ -107,15 +110,18 @@ const NewMenuModal: React.FC<ModalFormProps> = ({ visible, onCancel, onSubmit })
         }))
     }, [globalMenuItems]);
 
+    // Validation: skip uniqueness check for the item being edited
     const validateMenuName = (_: FormRule, value: string) => {
-        if (globalMenuList.some(item => item.name === value)) {
+        if (!value) return Promise.reject("Please enter a name");
+        if (globalMenuList.some(item => item.name === value && (!isEditing || item.name !== editItem?.name))) {
             return Promise.reject("Menu name already exists");
         }
         return Promise.resolve();
     };
 
     const validateCommand = (_: FormRule, value: string) => {
-        if (globalMenuList.some(item => item.command === value)) {
+        if (!value) return Promise.reject("Please enter a command");
+        if (globalMenuList.some(item => item.command === value && (!isEditing || item.command !== editItem?.command))) {
             return Promise.reject("Command ID already exists");
         }
         return Promise.resolve();
@@ -123,34 +129,47 @@ const NewMenuModal: React.FC<ModalFormProps> = ({ visible, onCancel, onSubmit })
 
     const handleOk = async () => {
         try {
-            await form.validateFields();
+            const values = await form.validateFields();
             form.submit();
         } catch (error) {
             console.log('vaild failed', error);
         }
     }
 
+    // Reset or pre-fill when modal opens
     useEffect(() => {
         if (visible) {
             setFileList([])
-            form.resetFields();
-            // Pick a random color from the palette when the modal opens!
-            const randomStartColor = THEME_COLORS[Math.floor(Math.random() * THEME_COLORS.length)];
-            setSelectedColor(randomStartColor);
-            form.setFieldsValue({ color: randomStartColor });
+            if (editItem) {
+                // Pre-fill with the item being edited
+                const color = editItem.color || THEME_COLORS[4];
+                setSelectedColor(color);
+                form.setFieldsValue({
+                    name: editItem.name,
+                    command: editItem.command,
+                    color: color,
+                    items: editItem.items,
+                });
+            } else {
+                form.resetFields();
+                // Pick a random color from the palette when the modal opens!
+                const randomStartColor = THEME_COLORS[Math.floor(Math.random() * THEME_COLORS.length)];
+                setSelectedColor(randomStartColor);
+                form.setFieldsValue({ color: randomStartColor });
+            }
         }
-    }, [visible, form]);
+    }, [visible, form, editItem]);
 
     return (
         <Modal
             centered
-            okText="Create Menu"
+            okText={isEditing ? "Save Changes" : "Create Menu"}
             cancelText="Cancel"
             open={visible}
             onOk={handleOk}
             onCancel={onCancel}
             styles={modalStyles}
-            title="Create New Radial Menu"
+            title={isEditing ? "Edit Radial Menu" : "Create New Radial Menu"}
         >
             {contextHolder}
             <Form form={form} layout="vertical" onFinish={onSubmit}>

@@ -1,17 +1,18 @@
-import React, {useState, useMemo, useEffect} from "react";
+import React, {useState, useMemo, useEffect, useRef} from "react";
 import { DndContext, DragEndEvent, DragOverlay } from "@dnd-kit/core";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
 import { useListItemStore, useGlobalMenuItemStore } from "@/stores/store";
 import { customDropAnimation, sectorCollisionDetection } from "@/utils/util"
 import CommandList from "@/components/commandList";
-import { ConfigProvider, theme } from 'antd';
+import { ConfigProvider, theme, message } from 'antd';
 import { DragStartEvent } from "@dnd-kit/core/dist/types/events";
 import './App.css'
-import { GlobalRadialMenuItem, RadialMenuItem } from "@/types/type";
+import { GlobalRadialMenuItem, RadialMenuItem, flatListItem } from "@/types/type";
 import OperatedPanel from "@/components/operatedPanel";
 import { AnimatePresence } from 'motion/react'
 import EditableText from "@/components/EditableText.tsx";
 import TabTitle from "@/components/TabTitle.tsx";
+import { UploadOutlined } from "@ant-design/icons";
 
 const App:React.FC = () => {
     const { undo, redo } = useGlobalMenuItemStore();
@@ -179,6 +180,101 @@ useEffect(() => {
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, [undo, redo]);
 
+    // Drag and drop file import
+    const [dragOver, setDragOver] = useState(false);
+    const [messageApi, contextHolder] = message.useMessage();
+
+    // Build a flat lookup for enriching imported items with IDs
+    const flatLookup = useMemo(() => {
+        return listItems.flatMap((category) =>
+            category.items.map((item) => item)
+        );
+    }, [listItems]);
+
+    const handleFileDrop = async (file: File) => {
+        try {
+            const content = await new Promise<string>((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => resolve(e.target?.result as string);
+                reader.onerror = (e) => reject(e);
+                reader.readAsText(file);
+            });
+            const parsedData = JSON.parse(content);
+
+            // Enrich items with IDs by matching commands to known commands
+            const enrichedItems: RadialMenuItem[] = parsedData.items.reduce(
+                (acc: RadialMenuItem[], item: { command: string; icon: string; label: string }) => {
+                    const targetCommand = flatLookup.find((data) => data.command === item.command);
+                    if (targetCommand && acc.findIndex((i) => i.command === targetCommand.command) < 0 && acc.length < 12) {
+                        acc.push({
+                            ...item,
+                            id: `RadialMenu-${targetCommand.id}`,
+                        });
+                    }
+                    return acc;
+                },
+                []
+            );
+
+            const newMenu: GlobalRadialMenuItem = {
+                name: parsedData.name,
+                command: parsedData.command,
+                color: parsedData.color || '#8B5CF6',
+                items: enrichedItems,
+            };
+
+            setGlobalMenuItems((prev) =>
+                prev.map((item, i) => (i === clampedIndex ? newMenu : item))
+            );
+            messageApi.success(`Imported "${parsedData.name}"`);
+        } catch (error) {
+            console.error(error);
+            messageApi.error("Failed to import file");
+        }
+    };
+
+    useEffect(() => {
+        const handleDragOver = (e: DragEvent) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setDragOver(true);
+        };
+        const handleDragLeave = (e: DragEvent) => {
+            e.preventDefault();
+            e.stopPropagation();
+            // Only hide if leaving the document
+            if (e.relatedTarget === null) {
+                setDragOver(false);
+            }
+        };
+        const handleDrop = (e: DragEvent) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setDragOver(false);
+
+            const file = e.dataTransfer?.files?.[0];
+            if (!file) return;
+
+            // Only accept .radial.json or .json files
+            const name = file.name.toLowerCase();
+            if (name.endsWith('.radial.json') || name.endsWith('.json')) {
+                handleFileDrop(file);
+            } else {
+                messageApi.warning("Please drop a .radial.json file");
+            }
+        };
+
+        window.addEventListener('dragover', handleDragOver);
+        window.addEventListener('dragleave', handleDragLeave);
+        window.addEventListener('drop', handleDrop);
+
+        return () => {
+            window.removeEventListener('dragover', handleDragOver);
+            window.removeEventListener('dragleave', handleDragLeave);
+            window.removeEventListener('drop', handleDrop);
+        };
+    }, [clampedIndex, flatLookup]);
+
     return (
         <ConfigProvider
         theme={{
@@ -272,6 +368,17 @@ useEffect(() => {
                       </div>
                   </SortableContext>
               </DndContext>
+                    {contextHolder}
+                    {/* Drop zone overlay */}
+                    {dragOver && (
+                        <div className="absolute inset-0 z-50 flex items-center justify-center bg-neutral-900/80 backdrop-blur-sm rounded-sm pointer-events-none">
+                            <div className="flex flex-col items-center gap-4 text-white">
+                                <UploadOutlined className="text-5xl text-violet-400" />
+                                <span className="text-xl gabarito-bold">Drop menu file to import</span>
+                                <span className="text-sm text-neutral-400">Replaces the currently active menu</span>
+                            </div>
+                        </div>
+                    )}
             </div>
         </ConfigProvider>
     )
