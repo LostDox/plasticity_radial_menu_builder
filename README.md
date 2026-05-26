@@ -10,7 +10,7 @@
 <br>
 
 ## 🛠 Plasticity Version Support
-**Supports all versions up to v2026.1.3.**
+**Command List updates daily**
 *The command panel will be updated as new tools are released to ensure full compatibility.*
 
 ## Quick Start
