@@ -74,6 +74,10 @@ const TabTitle:React.FC< {
 
     const globalItemsOnlyName = useMemo(() => globalItems.map(item => item.name), [globalItems])
 
+    const handleEdit = (editIndex: number) => {
+        setEditModalIndex(editIndex);
+    }
+
     const segmentOptions = useMemo(() => {
         return globalItems.map((item, idx) => ({
             value: item.name,
@@ -96,10 +100,6 @@ const TabTitle:React.FC< {
 
     const handleAdd = () => {
         setModalOpen(true);
-    }
-
-    const handleEdit = (editIndex: number) => {
-        setEditModalIndex(editIndex);
     }
 
     const downloadJson = (menuItem: GlobalRadialMenuItem) => {
