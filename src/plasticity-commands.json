@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "lastUpdated": "2026-10-19"
+    "lastUpdated": "2026-10-20"
   },
   "commandList": [
     {
@@ -277,6 +277,14 @@
     },
     {
       "id": 35,
+      "label": "Edge Align",
+      "icon": "edge-align",
+      "command": "command:edge-align",
+      "label_zh": "Edge Align",
+      "isAdd": false
+    },
+    {
+      "id": 36,
       "label": "Ellipse",
       "icon": "ellipse",
       "command": "command:ellipse",
@@ -284,7 +292,7 @@
       "isAdd": false
     },
     {
-      "id": 36,
+      "id": 37,
       "label": "Export Hidden Line",
       "icon": "export-hidden-line",
       "command": "command:export-hidden-line",
@@ -292,7 +300,7 @@
       "isAdd": false
     },
     {
-      "id": 37,
+      "id": 38,
       "label": "Export Obj",
       "icon": "export-obj",
       "command": "command:export-obj",
@@ -300,7 +308,7 @@
       "isAdd": false
     },
     {
-      "id": 38,
+      "id": 39,
       "label": "Export Stl",
       "icon": "export-stl",
       "command": "command:export-stl",
@@ -308,7 +316,7 @@
       "isAdd": false
     },
     {
-      "id": 39,
+      "id": 40,
       "label": "Export3Mf",
       "icon": "export3mf",
       "command": "command:export3mf",
@@ -316,7 +324,7 @@
       "isAdd": false
     },
     {
-      "id": 40,
+      "id": 41,
       "label": "Extend",
       "icon": "extend",
       "command": "command:extend",
@@ -324,7 +332,7 @@
       "isAdd": false
     },
     {
-      "id": 41,
+      "id": 42,
       "label": "Extrude",
       "icon": "extrude",
       "command": "command:extrude",
@@ -332,7 +340,7 @@
       "isAdd": false
     },
     {
-      "id": 42,
+      "id": 43,
       "label": "Fillet",
       "icon": "fillet",
       "command": "command:fillet",
@@ -340,7 +348,7 @@
       "isAdd": false
     },
     {
-      "id": 43,
+      "id": 44,
       "label": "Fillet Shell",
       "icon": "fillet-shell",
       "command": "command:fillet-shell",
@@ -348,7 +356,7 @@
       "isAdd": false
     },
     {
-      "id": 44,
+      "id": 45,
       "label": "Find Boundary Edges",
       "icon": "find-boundary-edges",
       "command": "command:find-boundary-edges",
@@ -356,7 +364,7 @@
       "isAdd": false
     },
     {
-      "id": 45,
+      "id": 46,
       "label": "Fork Material",
       "icon": "fork-material",
       "command": "command:fork-material",
@@ -364,7 +372,7 @@
       "isAdd": false
     },
     {
-      "id": 46,
+      "id": 47,
       "label": "Freestyle Mirror",
       "icon": "freestyle-mirror",
       "command": "command:freestyle-mirror",
@@ -372,7 +380,7 @@
       "isAdd": false
     },
     {
-      "id": 47,
+      "id": 48,
       "label": "Freestyle Move",
       "icon": "freestyle-move",
       "command": "command:freestyle-move",
@@ -380,7 +388,7 @@
       "isAdd": false
     },
     {
-      "id": 48,
+      "id": 49,
       "label": "Freestyle Offset Planar Curve",
       "icon": "freestyle-offset-planar-curve",
       "command": "command:freestyle-offset-planar-curve",
@@ -388,7 +396,7 @@
       "isAdd": false
     },
     {
-      "id": 49,
+      "id": 50,
       "label": "Freestyle Rotate",
       "icon": "freestyle-rotate",
       "command": "command:freestyle-rotate",
@@ -396,7 +404,7 @@
       "isAdd": false
     },
     {
-      "id": 50,
+      "id": 51,
       "label": "Freestyle Scale",
       "icon": "freestyle-scale",
       "command": "command:freestyle-scale",
@@ -404,7 +412,7 @@
       "isAdd": false
     },
     {
-      "id": 51,
+      "id": 52,
       "label": "Group Selected",
       "icon": "group-selected",
       "command": "command:group-selected",
@@ -412,7 +420,7 @@
       "isAdd": false
     },
     {
-      "id": 52,
+      "id": 53,
       "label": "Hide Selected",
       "icon": "hide-selected",
       "command": "command:hide-selected",
@@ -420,7 +428,7 @@
       "isAdd": false
     },
     {
-      "id": 53,
+      "id": 54,
       "label": "Hide Unselected",
       "icon": "hide-unselected",
       "command": "command:hide-unselected",
@@ -428,7 +436,7 @@
       "isAdd": false
     },
     {
-      "id": 54,
+      "id": 55,
       "label": "Hollow",
       "icon": "hollow",
       "command": "command:hollow",
@@ -436,7 +444,7 @@
       "isAdd": false
     },
     {
-      "id": 55,
+      "id": 56,
       "label": "Imprint",
       "icon": "imprint",
       "command": "command:imprint",
@@ -444,7 +452,7 @@
       "isAdd": false
     },
     {
-      "id": 56,
+      "id": 57,
       "label": "Insert Knot",
       "icon": "insert-knot",
       "command": "command:insert-knot",
@@ -452,7 +460,7 @@
       "isAdd": false
     },
     {
-      "id": 57,
+      "id": 58,
       "label": "Invert Hidden",
       "icon": "invert-hidden",
       "command": "command:invert-hidden",
@@ -460,7 +468,7 @@
       "isAdd": false
     },
     {
-      "id": 58,
+      "id": 59,
       "label": "Invert Selection",
       "icon": "invert-selection",
       "command": "command:invert-selection",
@@ -468,7 +476,7 @@
       "isAdd": false
     },
     {
-      "id": 59,
+      "id": 60,
       "label": "Isolate",
       "icon": "isolate",
       "command": "command:isolate",
@@ -476,7 +484,7 @@
       "isAdd": false
     },
     {
-      "id": 60,
+      "id": 61,
       "label": "Isoparam",
       "icon": "isoparam",
       "command": "command:isoparam",
@@ -484,7 +492,7 @@
       "isAdd": false
     },
     {
-      "id": 61,
+      "id": 62,
       "label": "Join",
       "icon": "join",
       "command": "command:join",
@@ -492,7 +500,7 @@
       "isAdd": false
     },
     {
-      "id": 62,
+      "id": 63,
       "label": "Line",
       "icon": "line",
       "command": "command:line",
@@ -500,7 +508,7 @@
       "isAdd": false
     },
     {
-      "id": 63,
+      "id": 64,
       "label": "Lock Selected",
       "icon": "lock-selected",
       "command": "command:lock-selected",
@@ -508,7 +516,7 @@
       "isAdd": false
     },
     {
-      "id": 64,
+      "id": 65,
       "label": "Loft",
       "icon": "loft",
       "command": "command:loft",
@@ -516,7 +524,7 @@
       "isAdd": false
     },
     {
-      "id": 65,
+      "id": 66,
       "label": "Loft Guide",
       "icon": "loft-guide",
       "command": "command:loft-guide",
@@ -524,7 +532,7 @@
       "isAdd": false
     },
     {
-      "id": 66,
+      "id": 67,
       "label": "Manage My Shared Documents",
       "icon": "manage-my-shared-documents",
       "command": "command:manage-my-shared-documents",
@@ -532,7 +540,7 @@
       "isAdd": false
     },
     {
-      "id": 67,
+      "id": 68,
       "label": "Match Face",
       "icon": "match-face",
       "command": "command:match-face",
@@ -540,7 +548,7 @@
       "isAdd": false
     },
     {
-      "id": 68,
+      "id": 69,
       "label": "Measure",
       "icon": "measure",
       "command": "command:measure",
@@ -548,7 +556,7 @@
       "isAdd": false
     },
     {
-      "id": 69,
+      "id": 70,
       "label": "Measure Continuity",
       "icon": "measure-continuity",
       "command": "command:measure-continuity",
@@ -556,7 +564,7 @@
       "isAdd": false
     },
     {
-      "id": 70,
+      "id": 71,
       "label": "Measure Radius",
       "icon": "measure-radius",
       "command": "command:measure-radius",
@@ -564,7 +572,7 @@
       "isAdd": false
     },
     {
-      "id": 71,
+      "id": 72,
       "label": "Mirror",
       "icon": "mirror",
       "command": "command:mirror",
@@ -572,7 +580,7 @@
       "isAdd": false
     },
     {
-      "id": 72,
+      "id": 73,
       "label": "Move",
       "icon": "move",
       "command": "command:move",
@@ -580,7 +588,7 @@
       "isAdd": false
     },
     {
-      "id": 73,
+      "id": 74,
       "label": "Offset Curve",
       "icon": "offset-curve",
       "command": "command:offset-curve",
@@ -588,7 +596,7 @@
       "isAdd": false
     },
     {
-      "id": 74,
+      "id": 75,
       "label": "Paste With Placement",
       "icon": "paste-with-placement",
       "command": "command:paste-with-placement",
@@ -596,7 +604,7 @@
       "isAdd": false
     },
     {
-      "id": 75,
+      "id": 76,
       "label": "Patch",
       "icon": "patch",
       "command": "command:patch",
@@ -604,7 +612,7 @@
       "isAdd": false
     },
     {
-      "id": 76,
+      "id": 77,
       "label": "Pipe",
       "icon": "pipe",
       "command": "command:pipe",
@@ -612,7 +620,7 @@
       "isAdd": false
     },
     {
-      "id": 77,
+      "id": 78,
       "label": "Place",
       "icon": "place",
       "command": "command:place",
@@ -620,7 +628,15 @@
       "isAdd": false
     },
     {
-      "id": 78,
+      "id": 79,
+      "label": "Poly Splines",
+      "icon": "poly-splines",
+      "command": "command:poly-splines",
+      "label_zh": "Poly Splines",
+      "isAdd": false
+    },
+    {
+      "id": 80,
       "label": "Polygon",
       "icon": "polygon",
       "command": "command:polygon",
@@ -628,15 +644,7 @@
       "isAdd": false
     },
     {
-      "id": 79,
-      "label": "Polysplines",
-      "icon": "polyspline",
-      "command": "command:poly-splines",
-      "label_zh": "Polysplines",
-      "isAdd": false
-    },
-    {
-      "id": 80,
+      "id": 81,
       "label": "Project",
       "icon": "project",
       "command": "command:project",
@@ -644,7 +652,15 @@
       "isAdd": false
     },
     {
-      "id": 81,
+      "id": 82,
+      "label": "Project Align",
+      "icon": "project-align",
+      "command": "command:project-align",
+      "label_zh": "Project Align",
+      "isAdd": false
+    },
+    {
+      "id": 83,
       "label": "Publish To Plasticity Share",
       "icon": "publish-to-plasticity-share",
       "command": "command:publish-to-plasticity-share",
@@ -652,7 +668,7 @@
       "isAdd": false
     },
     {
-      "id": 82,
+      "id": 84,
       "label": "Push Face",
       "icon": "push-face",
       "command": "command:push-face",
@@ -660,7 +676,7 @@
       "isAdd": false
     },
     {
-      "id": 83,
+      "id": 85,
       "label": "Radial Array",
       "icon": "radial-array",
       "command": "command:radial-array",
@@ -668,7 +684,7 @@
       "isAdd": false
     },
     {
-      "id": 84,
+      "id": 86,
       "label": "Raise Degree",
       "icon": "raise-degree",
       "command": "command:raise-degree",
@@ -676,7 +692,7 @@
       "isAdd": false
     },
     {
-      "id": 85,
+      "id": 87,
       "label": "Realize Instances",
       "icon": "realize-instances",
       "command": "command:realize-instances",
@@ -684,7 +700,7 @@
       "isAdd": false
     },
     {
-      "id": 86,
+      "id": 88,
       "label": "Rebuild",
       "icon": "rebuild",
       "command": "command:rebuild",
@@ -692,7 +708,7 @@
       "isAdd": false
     },
     {
-      "id": 87,
+      "id": 89,
       "label": "Rectangular Array",
       "icon": "rectangular-array",
       "command": "command:rectangular-array",
@@ -700,7 +716,7 @@
       "isAdd": false
     },
     {
-      "id": 88,
+      "id": 90,
       "label": "Remove Fillets From Shell",
       "icon": "remove-fillets-from-shell",
       "command": "command:remove-fillets-from-shell",
@@ -708,7 +724,7 @@
       "isAdd": false
     },
     {
-      "id": 89,
+      "id": 91,
       "label": "Remove Material",
       "icon": "remove-material",
       "command": "command:remove-material",
@@ -716,7 +732,7 @@
       "isAdd": false
     },
     {
-      "id": 90,
+      "id": 92,
       "label": "Remove Nominal Surface",
       "icon": "remove-nominal-surface",
       "command": "command:remove-nominal-surface",
@@ -724,7 +740,7 @@
       "isAdd": false
     },
     {
-      "id": 91,
+      "id": 93,
       "label": "Reverse",
       "icon": "reverse",
       "command": "command:reverse",
@@ -732,7 +748,7 @@
       "isAdd": false
     },
     {
-      "id": 92,
+      "id": 94,
       "label": "Revolve",
       "icon": "revolve",
       "command": "command:revolve",
@@ -740,7 +756,7 @@
       "isAdd": false
     },
     {
-      "id": 93,
+      "id": 95,
       "label": "Rotate",
       "icon": "rotate",
       "command": "command:rotate",
@@ -748,7 +764,7 @@
       "isAdd": false
     },
     {
-      "id": 94,
+      "id": 96,
       "label": "Scale",
       "icon": "scale",
       "command": "command:scale",
@@ -756,7 +772,7 @@
       "isAdd": false
     },
     {
-      "id": 95,
+      "id": 97,
       "label": "Section Analysis",
       "icon": "section-analysis",
       "command": "command:section-analysis",
@@ -764,7 +780,7 @@
       "isAdd": false
     },
     {
-      "id": 96,
+      "id": 98,
       "label": "Select Adjacent",
       "icon": "select-adjacent",
       "command": "command:select-adjacent",
@@ -772,7 +788,7 @@
       "isAdd": false
     },
     {
-      "id": 97,
+      "id": 99,
       "label": "Select All",
       "icon": "select-all",
       "command": "command:select-all",
@@ -780,7 +796,15 @@
       "isAdd": false
     },
     {
-      "id": 98,
+      "id": 100,
+      "label": "Select All Constraints",
+      "icon": "select-all-constraints",
+      "command": "command:select-all-constraints",
+      "label_zh": "Select All Constraints",
+      "isAdd": false
+    },
+    {
+      "id": 101,
       "label": "Select All Curves",
       "icon": "select-all-curves",
       "command": "command:select-all-curves",
@@ -788,7 +812,7 @@
       "isAdd": false
     },
     {
-      "id": 99,
+      "id": 102,
       "label": "Select Next Entity Collection",
       "icon": "select-next-entity-collection",
       "command": "command:select-next-entity-collection",
@@ -796,7 +820,7 @@
       "isAdd": false
     },
     {
-      "id": 100,
+      "id": 103,
       "label": "Select Previous Entity Collection",
       "icon": "select-previous-entity-collection",
       "command": "command:select-previous-entity-collection",
@@ -804,7 +828,7 @@
       "isAdd": false
     },
     {
-      "id": 101,
+      "id": 104,
       "label": "Set Material",
       "icon": "set-material",
       "command": "command:set-material",
@@ -812,7 +836,7 @@
       "isAdd": false
     },
     {
-      "id": 102,
+      "id": 105,
       "label": "Slide",
       "icon": "slide",
       "command": "command:slide",
@@ -820,7 +844,7 @@
       "isAdd": false
     },
     {
-      "id": 103,
+      "id": 106,
       "label": "Slot",
       "icon": "slot",
       "command": "command:slot",
@@ -828,7 +852,7 @@
       "isAdd": false
     },
     {
-      "id": 104,
+      "id": 107,
       "label": "Smart Command",
       "icon": "smart-command",
       "command": "command:smart-command",
@@ -836,7 +860,7 @@
       "isAdd": false
     },
     {
-      "id": 105,
+      "id": 108,
       "label": "Sphere",
       "icon": "sphere",
       "command": "command:sphere",
@@ -844,7 +868,7 @@
       "isAdd": false
     },
     {
-      "id": 106,
+      "id": 109,
       "label": "Spiral",
       "icon": "spiral",
       "command": "command:spiral",
@@ -852,7 +876,7 @@
       "isAdd": false
     },
     {
-      "id": 107,
+      "id": 110,
       "label": "Split Segment",
       "icon": "split-segment",
       "command": "command:split-segment",
@@ -860,7 +884,7 @@
       "isAdd": false
     },
     {
-      "id": 108,
+      "id": 111,
       "label": "Square",
       "icon": "square",
       "command": "command:square",
@@ -868,7 +892,7 @@
       "isAdd": false
     },
     {
-      "id": 109,
+      "id": 112,
       "label": "Subdivide",
       "icon": "subdivide",
       "command": "command:subdivide",
@@ -876,7 +900,7 @@
       "isAdd": false
     },
     {
-      "id": 110,
+      "id": 113,
       "label": "Sweep",
       "icon": "sweep",
       "command": "command:sweep",
@@ -884,7 +908,7 @@
       "isAdd": false
     },
     {
-      "id": 111,
+      "id": 114,
       "label": "Sweep Tool",
       "icon": "sweep-tool",
       "command": "command:sweep-tool",
@@ -892,7 +916,7 @@
       "isAdd": false
     },
     {
-      "id": 112,
+      "id": 115,
       "label": "Tangent Arc",
       "icon": "tangent-arc",
       "command": "command:tangent-arc",
@@ -900,7 +924,7 @@
       "isAdd": false
     },
     {
-      "id": 113,
+      "id": 116,
       "label": "Tangent Circle",
       "icon": "tangent-circle",
       "command": "command:tangent-circle",
@@ -908,7 +932,7 @@
       "isAdd": false
     },
     {
-      "id": 114,
+      "id": 117,
       "label": "Text",
       "icon": "text",
       "command": "command:text",
@@ -916,7 +940,7 @@
       "isAdd": false
     },
     {
-      "id": 115,
+      "id": 118,
       "label": "Thicken",
       "icon": "thicken",
       "command": "command:thicken",
@@ -924,7 +948,7 @@
       "isAdd": false
     },
     {
-      "id": 116,
+      "id": 119,
       "label": "Three Point Arc",
       "icon": "three-point-arc",
       "command": "command:three-point-arc",
@@ -932,7 +956,7 @@
       "isAdd": false
     },
     {
-      "id": 117,
+      "id": 120,
       "label": "Three Point Box",
       "icon": "three-point-box",
       "command": "command:three-point-box",
@@ -940,7 +964,7 @@
       "isAdd": false
     },
     {
-      "id": 118,
+      "id": 121,
       "label": "Three Point Circle",
       "icon": "three-point-circle",
       "command": "command:three-point-circle",
@@ -948,7 +972,7 @@
       "isAdd": false
     },
     {
-      "id": 119,
+      "id": 122,
       "label": "Three Point Rectangle",
       "icon": "three-point-rectangle",
       "command": "command:three-point-rectangle",
@@ -956,7 +980,7 @@
       "isAdd": false
     },
     {
-      "id": 120,
+      "id": 123,
       "label": "Toggle Curvature",
       "icon": "toggle-curvature",
       "command": "command:toggle-curvature",
@@ -964,7 +988,7 @@
       "isAdd": false
     },
     {
-      "id": 121,
+      "id": 124,
       "label": "Toggle Points",
       "icon": "toggle-points",
       "command": "command:toggle-points",
@@ -972,7 +996,7 @@
       "isAdd": false
     },
     {
-      "id": 122,
+      "id": 125,
       "label": "Trim",
       "icon": "trim",
       "command": "command:trim",
@@ -980,7 +1004,7 @@
       "isAdd": false
     },
     {
-      "id": 123,
+      "id": 126,
       "label": "Two Point Circle",
       "icon": "two-point-circle",
       "command": "command:two-point-circle",
@@ -988,7 +1012,7 @@
       "isAdd": false
     },
     {
-      "id": 124,
+      "id": 127,
       "label": "Ungroup Selected",
       "icon": "ungroup-selected",
       "command": "command:ungroup-selected",
@@ -996,7 +1020,7 @@
       "isAdd": false
     },
     {
-      "id": 125,
+      "id": 128,
       "label": "Unhide All",
       "icon": "unhide-all",
       "command": "command:unhide-all",
@@ -1004,7 +1028,7 @@
       "isAdd": false
     },
     {
-      "id": 126,
+      "id": 129,
       "label": "Unisolate",
       "icon": "unisolate",
       "command": "command:unisolate",
@@ -1012,7 +1036,7 @@
       "isAdd": false
     },
     {
-      "id": 127,
+      "id": 130,
       "label": "Unjoin",
       "icon": "unjoin",
       "command": "command:unjoin",
@@ -1020,7 +1044,7 @@
       "isAdd": false
     },
     {
-      "id": 128,
+      "id": 131,
       "label": "Untrim",
       "icon": "untrim",
       "command": "command:untrim",
@@ -1028,7 +1052,7 @@
       "isAdd": false
     },
     {
-      "id": 129,
+      "id": 132,
       "label": "Unwrap Face",
       "icon": "unwrap-face",
       "command": "command:unwrap-face",
@@ -1036,7 +1060,7 @@
       "isAdd": false
     },
     {
-      "id": 130,
+      "id": 133,
       "label": "Xnurbs",
       "icon": "xnurbs",
       "command": "command:xnurbs",
